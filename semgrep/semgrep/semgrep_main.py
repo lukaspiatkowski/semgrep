@@ -120,6 +120,7 @@ def invoke_semgrep(
         filtered_matches_by_rule,
         _,
         _,
+        _,
         filtered_rules,
         profiler,
         profiling_data,
@@ -276,6 +277,7 @@ def main(
     baseline_commit: Optional[str] = None,
 ) -> Tuple[
     RuleMatchMap,
+    List[SemgrepError],
     Set[Path],
     IgnoreLog,
     List[Rule],
@@ -467,6 +469,7 @@ def main(
 
     return (
         filtered_matches_by_rule,
+        semgrep_errors,
         all_targets,
         target_manager.ignore_log,
         filtered_rules,
